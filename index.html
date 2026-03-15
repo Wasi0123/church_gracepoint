@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GracePoint Church — Member Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== AUTH OVERLAY ===== -->
+<div id="authOverlay" class="auth-overlay">
+  <div class="auth-bg">
+    <div class="auth-cross"></div>
+    <div class="auth-rays"></div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="logo-icon">✦</div>
+      <h1>GracePoint<br><span>Church</span></h1>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required>
+      </div>
+      <div class="form-row-check">
+        <label class="checkbox-label">
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn-primary full">Sign In</button>
+      <div class="demo-accounts">
+        <p>Demo Accounts:</p>
+        <button type="button" onclick="demoLogin('member')" class="demo-btn">👤 Member Demo</button>
+        <button type="button" onclick="demoLogin('admin')" class="demo-btn admin">🛡️ Admin Demo</button>
+      </div>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="registerForm" class="auth-form hidden" onsubmit="handleRegister(event)">
+      <div class="form-row-two">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Doe" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+1 234 567 8900">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" required>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <select>
+          <option value="">Select Department</option>
+          <option>Worship Team</option>
+          <option>Youth Ministry</option>
+          <option>Children's Church</option>
+          <option>Ushering</option>
+          <option>Media & Tech</option>
+          <option>Prayer Team</option>
+          <option>General Member</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary full">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app" class="app hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <span class="logo-cross">✦</span>
+        <div>
+          <h2>GracePoint</h2>
+          <p>Church Portal</p>
+        </div>
+      </div>
+      <button class="sidebar-close" onclick="toggleSidebar()">✕</button>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebarAvatar">JD</div>
+      <div class="user-info">
+        <h3 id="sidebarName">John Doe</h3>
+        <span id="sidebarRole" class="role-badge">Member</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+      <!-- dynamically filled -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <button onclick="handleLogout()" class="logout-btn">⬡ Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <header class="top-bar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="top-bar-title" id="pageTitle">Dashboard</div>
+      <div class="top-bar-actions">
+        <button class="icon-btn notif-btn" onclick="showPage('announcements')">
+          🔔 <span class="notif-dot"></span>
+        </button>
+        <div class="avatar-sm" id="topAvatar" onclick="showPage('profile')">JD</div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTAINERS -->
+    <div class="page-wrapper" id="pageContainer">
+      <!-- Pages injected by JS -->
+    </div>
+  </main>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div id="modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalTitle">Modal</h3>
+      <button onclick="closeModal()">✕</button>
+    </div>
+    <div id="modalBody" class="modal-body"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
