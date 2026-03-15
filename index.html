@@ -18,6 +18,9 @@
     <div class="auth-rays"></div>
   </div>
   <div class="auth-card">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button id="langToggleBtnAuth" onclick="toggleLanguage()" class="lang-toggle-btn">🇫🇷 FR</button>
+    </div>
     <div class="auth-logo">
       <div class="logo-icon">✦</div>
       <h1>GracePoint<br><span>Church</span></h1>
@@ -132,6 +135,7 @@
       <button class="hamburger" onclick="toggleSidebar()">☰</button>
       <div class="top-bar-title" id="pageTitle">Dashboard</div>
       <div class="top-bar-actions">
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-toggle-btn">🇫🇷 FR</button>
         <button class="icon-btn notif-btn" onclick="showPage('announcements')">
           🔔 <span class="notif-dot"></span>
         </button>
@@ -160,6 +164,7 @@
 <!-- TOAST -->
 <div id="toast" class="toast hidden"></div>
 
+<script src="i18n.js"></script>
 <script src="bible.js"></script>
 <script src="app.js"></script>
 </body>

@@ -969,3 +969,44 @@ tbody tr:hover { background: rgba(201,168,76,0.03); }
 .verse-text {
   font-size: 15px; line-height: 1.75; color: var(--text);
 }
+
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--gold);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--gold);
+  font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-family: 'Outfit', sans-serif;
+}
+.lang-toggle-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
+}
+/* In top bar (dark bg context) */
+.top-bar .lang-toggle-btn {
+  border-color: var(--cream-2);
+  color: var(--text-muted);
+}
+.top-bar .lang-toggle-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  box-shadow: none;
+  transform: none;
+}
+/* In auth card (light bg) */
+.auth-card .lang-toggle-btn {
+  border-color: rgba(201,168,76,0.5);
+  color: var(--gold);
+  font-size: 12px;
+  padding: 5px 12px;
+}
